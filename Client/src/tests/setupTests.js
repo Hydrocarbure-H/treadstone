@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 // Write a simple react test
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import App from '../components/App';
 
 test('renders learn react link', () => {
 

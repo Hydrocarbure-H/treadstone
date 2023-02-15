@@ -1,0 +1,45 @@
+.card
+{
+    background: rgba( 255, 255, 255, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 18.5px );
+    -webkit-backdrop-filter: blur( 18.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width : 250px;
+    height : 350px;
+    position : relative;
+    margin : 10px;
+    padding : 10px;
+    border-radius : 25px;
+    display: inline-block;
+}
+
+.miniature
+{
+    width : 150px;
+    margin: 0 auto;
+}
+
+.card-title
+{
+    font-size : 25px;
+    font-weight : bold;
+    text-align : center;
+    color: #000;
+}
+
+.card-subtitle
+{
+    font-size : 17px;
+    font-weight : bold;
+    text-align : center;
+    color: #aaa;
+}
+
+.card-description
+{
+    font-size : 15px;
+    text-align : center;
+    color: #000;
+}
