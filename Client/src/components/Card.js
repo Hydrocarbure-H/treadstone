@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 
-const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget ultricies nisl nisl eget nisl.";
-function Card() {
+function Card(props) {
+    const lorem = props.loremValue;
     return (
         <div className="card">
             <div className="miniature"><img src={logo} alt='miniature' /></div>
