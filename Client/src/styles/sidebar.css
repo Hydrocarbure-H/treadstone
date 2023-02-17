@@ -1,0 +1,21 @@
+/* Create a vertical side bar */
+
+.sideBar {
+    width: 50px;
+    position: fixed;
+    height: 80%;
+    z-index: 1;
+
+    /* center vertically */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    overflow-x: hidden;
+    padding-top: 10px;
+    border-radius: 0 25px 25px 25px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}

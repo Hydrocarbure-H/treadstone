@@ -1,3 +1,20 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+    height: 10px;
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 25px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
 .window
 {
     scroll-behavior: smooth;
