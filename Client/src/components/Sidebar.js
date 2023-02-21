@@ -1,18 +1,18 @@
 
 function Sidebar() {
     return (
-            <div className="sideBar">
-                <div className="side-button">
-                    Home
-                </div>
-                <div className="side-button">
-                    Articles
-                </div>
-                <div className="side-button">
-                    More
-                </div>
-            </div>
-            )
+        <div className="sideBar">
+            <a className="side-button">
+                Home
+            </a>
+            <a className="side-button">
+                Articles
+            </a>
+            <a className="side-button">
+                More
+            </a>
+        </div>
+    )
 }
 
 export default Sidebar
