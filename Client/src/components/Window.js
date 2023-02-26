@@ -12,9 +12,12 @@ const subtitle = "A new kind of intelligence";
 function Window()
 {
     return <div className="window">
-
         <Title titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
+        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClicked={() =>
+        {
+            console.log("clicked");
+            return <div>test</div>
+        }}/>
         <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle}/>
         <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
         <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}/>
@@ -26,7 +29,6 @@ function Window()
         <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}/>
         <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle}/>
         <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-
     </div>
 }
 
