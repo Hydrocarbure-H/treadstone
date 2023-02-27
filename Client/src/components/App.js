@@ -6,6 +6,7 @@ import '../styles/window.css';
 import '../styles/sidebar.css';
 import '../styles/card.css';
 import '../styles/title.css';
+import '../styles/article.css';
 
 import { useState } from 'react'
 

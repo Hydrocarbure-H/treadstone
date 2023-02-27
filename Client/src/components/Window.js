@@ -1,5 +1,6 @@
 import Card from './Card'
 import Title from "./Title";
+import Article from "./Article";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl.";
 const lorem2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl";
@@ -17,7 +18,7 @@ function Window(props) {
     /* use state to display article */
 
     if (display_article) {
-        return display_article_f();
+        return display_article_f(article);
     }
 
     else {
@@ -25,15 +26,14 @@ function Window(props) {
     }
 
     function handleClick(e) {
-        console.log("clicked " + e);
         props.setArticle(e);
         props.setDisplay_article(true);
     }
 
-    function display_article_f() {
+    function display_article_f(e) {
+        console.log(e);
         return <div className="window">
-            <Title titleValue={title} subtitleValue={subtitle} />
-
+            <Article contentValue={e.description} titleValue={e.title} subtitleValue={e.subtitle} />
         </div>
     }
 

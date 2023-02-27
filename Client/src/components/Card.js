@@ -8,7 +8,7 @@ function Card(props) {
 
 
     return (
-        <div className="card" onClick={() => onClickFunction(title)}>
+        <div className="card" onClick={() => onClickFunction({ "title": title, "subtitle": subtitle, "description": description })}>
             <div className="miniature"><img src={logo} alt='miniature' /></div>
             <div className="card-title">{title}</div>
             <div className="card-subtitle">{subtitle}</div>
