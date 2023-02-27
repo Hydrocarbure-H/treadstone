@@ -33,6 +33,17 @@
 }
 
 .card-description {
+    /* text overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    /* word wrap */
+    word-wrap: break-word;
+
+
+
     margin-top: 10px;
     font-size: 15px;
     text-align: left;
