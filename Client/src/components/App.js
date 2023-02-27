@@ -7,10 +7,14 @@ import '../styles/sidebar.css';
 import '../styles/card.css';
 import '../styles/title.css';
 
-function App()
-{
+import { useState } from 'react'
+
+function App() {
+    const [display_article, setDisplay_article] = useState(false);
+    const [article, setArticle] = useState("");
+
     return <div className="container">
-        <Window/>
+        <Window display_article={display_article} article={article} setDisplay_article={setDisplay_article} setArticle={setArticle} />
     </div>
 }
 

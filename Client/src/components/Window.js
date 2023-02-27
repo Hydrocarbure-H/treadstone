@@ -9,27 +9,53 @@ const lorem4 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eui
 const title = "Treadstone";
 const subtitle = "A new kind of intelligence";
 
-function Window()
-{
-    return <div className="window">
-        <Title titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClicked={() =>
-        {
-            console.log("clicked");
-            return <div>test</div>
-        }}/>
-        <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle}/>
-        <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle}/>
-    </div>
+function Window(props) {
+
+    const display_article = props.display_article;
+    const article = props.article;
+
+    /* use state to display article */
+
+    if (display_article) {
+        return display_article_f();
+    }
+
+    else {
+        return display_cards();
+    }
+
+    function handleClick(e) {
+        console.log("clicked " + e);
+        props.setArticle(e);
+        props.setDisplay_article(true);
+    }
+
+    function display_article_f() {
+        return <div className="window">
+            <Title titleValue={title} subtitleValue={subtitle} />
+
+        </div>
+    }
+
+
+    function display_cards() {
+        return <div className="window">
+            <Title titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleClick} />
+            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+        </div>
+    }
+
 }
 
 export default Window
