@@ -32,7 +32,7 @@ function Window(props) {
 
     function display_article_f(e) {
         console.log(e);
-        return <div className="window">
+        return <div className="window-article">
             <Article contentValue={e.description} titleValue={e.title} subtitleValue={e.subtitle} />
         </div>
     }
