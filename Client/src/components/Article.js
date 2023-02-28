@@ -5,10 +5,12 @@ function Article(props) {
     const content = props.contentValue;
     const title = props.titleValue;
     const subtitle = props.subtitleValue;
+    const onClickFunction = props.goBackFunction;
+
 
     return (
         <div>
-            <div className='close-button'>
+            <div className='close-button' onClick={() => onClickFunction()}>
                 <img src={back_button} alt='back' />
             </div>
             <div className="article">
