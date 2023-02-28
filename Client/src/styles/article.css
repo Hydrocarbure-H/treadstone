@@ -1,7 +1,7 @@
 .article {
     width: calc(100% - 100px);
     height: calc(100% - 100px);
-    padding: 50px;
+    padding: 0px 50px 50px 50px;
 }
 
 .article-title {
@@ -24,4 +24,26 @@
     font-size: 15px;
     text-align: left;
     color: #000;
+}
+
+.close-button {
+
+    /* sticky but at the top left of the parent */
+    position: -webkit-sticky;
+    position: sticky;
+    width: 25px;
+    top: 0px;
+    left: 0px;
+
+}
+
+.close-button img {
+    width: 25px;
+    height: 25px;
+    transition: .3s ease;
+}
+
+.close-button img:hover {
+    filter: invert(80%);
+    cursor: pointer;
 }
