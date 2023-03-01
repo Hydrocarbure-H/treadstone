@@ -37,6 +37,7 @@ function Window(props) {
 
     function display_article_f(e) {
         console.log(e);
+        // do a get request to the api, to get the content of the article
         return <div className="window-article">
             <Article contentValue={e.description} titleValue={e.title} subtitleValue={e.subtitle} goBackFunction={handleGoBack} />
         </div>
@@ -46,17 +47,17 @@ function Window(props) {
         return <div className="window">
             <Title titleValue={title} subtitleValue={subtitle} />
             <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
-            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} />
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} />
+            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
+            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle} />
         </div>
     }
 
