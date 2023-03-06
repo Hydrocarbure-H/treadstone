@@ -1,7 +1,15 @@
-from flask import jsonify, request
-from flask_restful import Resource
+from flask import jsonify
+from flask import Blueprint
+
+route = Blueprint('route', __name__)
 
 
-class Articles(Resource):
-    def get(self):
-        return jsonify({'articles': ['article1', 'article2']}, 200)
+@route.route('/', methods=['GET'])
+@route.route('/articles', methods=['GET'])
+def articles():
+    return jsonify({'articles': "coucou"}, 200)
+
+
+@route.route('/articles/view/<string:article_id>', methods=['GET'])
+def articles_view(article_id):
+    return jsonify({article_id: "coucou"}, 200)
