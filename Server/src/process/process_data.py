@@ -1,9 +1,14 @@
-import markdown
+import markdown2 as markdown
 import os
 import datetime
 
 
 def process_data(db):
+    """
+    Process the data from the data/articles folder and save it to the database
+    :param db: The database connection
+    :return: None
+    """
     # Get all the files
     files = list_files()
     # Loop through the files
@@ -15,6 +20,11 @@ def process_data(db):
 
 
 def get_data_from_file(file_name):
+    """
+    Get the data from the file
+    :param file_name: The file name
+    :return: The data
+    """
     # Open the file
     result = dict()
     with open("data/articles/" + file_name, "r") as file:
@@ -32,13 +42,19 @@ def get_data_from_file(file_name):
         result["author"] = data.split("##")[1].split("\n")[0][1:]
         # Remove the first 2 lines of the file
         data = data.split("\n")[2:]
-        # Convert it to HTML
-        result["content"] = markdown.markdown("\n".join(data))
+        # Convert it to HTML, with Fence code blocks and add syntax highlighting, linguist
+        result["content"] = markdown.markdown("\n".join(data),
+                                              extras=["fenced-code-blocks", "code-friendly"])
         # Return the result
         return result
 
 
 def save_data_to_db(db, data):
+    """
+    Save the data to the database
+    :param db: The database connection
+    :param data: The data
+    """
     # Create a cursor
     cursor = db.cursor(buffered=True)
     # Use the treadstone database
@@ -82,6 +98,10 @@ def save_data_to_db(db, data):
 
 
 def list_files():
+    """
+    List all the files in the data/articles folder
+    :return: The files
+    """
     # Get all the .md files in the data/articles folder
     files = os.listdir("data/articles")
     # Return the files

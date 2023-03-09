@@ -1,6 +1,8 @@
 from flask import jsonify
 from flask import Blueprint
 
+from src.db.db import connect_to_db
+
 route = Blueprint('route', __name__)
 
 
@@ -21,15 +23,29 @@ def articles():
     return jsonify(art_list, 200)
 
 
-@route.route('/articles/view/<string:article_id>', methods=['GET'])
+@route.route('/articles/view/<int:article_id>', methods=['GET'])
 def articles_view(article_id):
-    # Generate a random article composed of a title, subtitle and a lorem
-    title = "Treadstone - Apised"
-    subtitle = "This article is specific"
-    lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl n"
-    return jsonify({
-        'title': title,
-        'subtitle': subtitle,
-        'content': lorem,
-        'id': article_id
-    }, 200)
+    # Get the article with the id
+    db = connect_to_db()
+    cursor = db.cursor(buffered=True)
+    cursor.execute("USE treadstone")
+    cursor.execute(
+        "SELECT articles.title, authors.name, articles.content, articles.date FROM articles INNER JOIN authors ON articles.author = authors.id WHERE articles.id = " + str(
+            article_id))
+    if cursor.rowcount == 0:
+        return jsonify({
+            'error': 'Article not found'
+        }, 404)
+    else:
+        article = cursor.fetchone()
+        title = article[0]
+        author = article[1]
+        content = article[2]
+        date = article[3]
+        print(title, author, content, date)
+        return jsonify({
+            'title': title,
+            'subtitle': author,
+            'content': content,
+            'date': date
+        }, 200)

@@ -32,7 +32,7 @@ function Window(props)
     function handleArticle(e)
     {
         var article = null;
-        fetch("http://127.0.0.1:5000/articles/view/" + "coucou")
+        fetch("http://127.0.0.1:5000/articles/view/" + 1)
             .then(response => response.json())
             .then(data =>
             {
