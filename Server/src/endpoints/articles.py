@@ -42,7 +42,6 @@ def articles_view(article_id):
         author = article[1]
         content = article[2]
         date = article[3]
-        print(title, author, content, date)
         return jsonify({
             'title': title,
             'subtitle': author,

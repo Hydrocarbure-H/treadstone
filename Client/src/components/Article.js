@@ -5,6 +5,7 @@ function Article(props)
 {
     // Use dangerouslySetInnerHTML to render the content as HTML
     const content = {__html: props.contentValue};
+
     const title = props.titleValue;
     const subtitle = props.subtitleValue;
     const onClickFunction = props.goBackFunction;
