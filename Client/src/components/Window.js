@@ -1,7 +1,6 @@
-import Card from './Card'
 import Title from "./Title";
 import Article from "./Article";
-
+import Card from "./Card";
 
 const lorem = "Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl.Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl. eget ultricies nisl nisl eget nisl.";
 const lorem2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl";
@@ -16,6 +15,7 @@ function Window(props)
 
     const display_article = props.display_article;
     const article = props.article;
+    const articles = props.articles;
 
     /* use state to display article */
 
@@ -26,20 +26,29 @@ function Window(props)
 
     else
     {
-        return display_cards();
+        return display_cards(articles);
     }
 
     function handleArticle(e)
     {
         var article = null;
-        fetch("http://127.0.0.1:5000/articles/view/" + 1)
+
+        fetch("http:///127.0.0.1:5000/articles/view/" + 1)
             .then(response => response.json())
             .then(data =>
             {
                 article = data[0];
-                console.log(article)
 
                 // Change the state
+                props.setArticle(article);
+            })
+            .catch(error =>
+            {
+                article = {
+                    "title": "Oh no...",
+                    "subtitle": "Error - Server error",
+                    "content": "It seems that the server is not responding. Please try again later."
+                }
                 props.setArticle(article);
             });
 
@@ -61,29 +70,53 @@ function Window(props)
         </div>
     }
 
-    function display_cards()
+    function get_articles()
     {
+        var articles = null;
+
+        fetch("http://127.0.0.1:5000/articles")
+            .then(response => response.json())
+            .then(data =>
+                {
+                    articles = data;
+                    props.setArticles(articles);
+                }
+            )
+            .catch(error =>
+            {
+                articles = [
+                    {
+                        "title": "Oh no...",
+                        "subtitle": "Error - Server error",
+                        "content": "It seems that the server is not responding. Please try again later."
+                    }
+                ]
+                props.setArticles(articles);
+            });
+        return articles;
+    }
+
+    function display_cards(articles)
+    {
+        console.log("Articles " + articles);
+
+        get_articles();
+
+        let cards = [];
+
+        for (let i = 0; i < articles.length; i++)
+        {
+            cards.push(<Card titleValue={articles[i].title} subtitleValue={articles[i].subtitle}
+                             descriptionValue={lorem2}
+                             onClickFunction={handleArticle}/>);
+        }
+
+        // return the window with the list of articles
         return <div className="window">
             <Title titleValue={title} subtitleValue={subtitle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem2} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem3} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem4} titleValue={title} subtitleValue={subtitle}
-                  onClickFunction={handleArticle}/>
-            <Card descriptionValue={lorem} titleValue={title} subtitleValue={subtitle} onClickFunction={handleArticle}/>
+            {cards}
         </div>
+
     }
 
 }

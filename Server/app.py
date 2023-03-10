@@ -12,9 +12,8 @@ app.register_blueprint(route)
 
 db = connect_to_db()
 construct_db(db)
-
 process_data(db)
-
 db.close()
+
 if __name__ == '__main__':
     app.run(debug=True)
