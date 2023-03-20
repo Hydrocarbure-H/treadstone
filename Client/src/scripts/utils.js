@@ -2,17 +2,10 @@
  * Get articles from the server
  * @returns {null}
  */
-function get_articles(props)
+async function get_articles(props)
 {
-    let articles = null;
-    fetch("http://127.0.0.1:5000/articles")
+    let articles = fetch("http://127.0.0.1:5000/articles")
         .then(response => response.json())
-        .then(data =>
-            {
-                articles = data;
-                props.setArticles(articles);
-            }
-        )
         .catch(error =>
         {
             articles = [
@@ -34,7 +27,7 @@ function handleArticle(props)
 {
     let article = null;
 
-    fetch("http://127.0.0.1:5000/articles/view/" + 1)
+    fetch("http://127.0.0.1:5000/articles/view/" + props.id)
         .then(response => response.json())
         .then(data =>
         {

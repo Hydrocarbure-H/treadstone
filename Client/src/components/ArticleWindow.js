@@ -2,7 +2,7 @@ import Article from "./Article";
 
 /**
  * Go back to the cards
- * @param e
+ * @param props
  */
 function handleGoBack(props)
 {
@@ -12,14 +12,15 @@ function handleGoBack(props)
 
 /**
  * Display article (called by handleArticle)
- * @param e
  * @returns {JSX.Element}
+ * @param props
  */
 function ArticleWindow(props)
 {
     const e = props.article;
     return <div className="window-article">
-        <Article contentValue={e.content} titleValue={e.title} subtitleValue={e.subtitle}
+        <Article content={e.content} title={e.title} subtitle={e.subtitle} setArticle={props.setArticle}
+                 setDisplay_article={props.setDisplay_article}
                  goBackFunction={handleGoBack}/>
     </div>
 }

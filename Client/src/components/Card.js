@@ -2,12 +2,13 @@ import logo from '../logo.svg';
 
 function Card(props)
 {
+    // Remove the first H1 tag
+    // And remove all the HTML tags
 
-    const description = props.descriptionValue;
-    const title = props.titleValue;
-    const subtitle = props.subtitleValue;
+    const description = props.description.replace(/<h1.*?>.*?<\/h1>/, "").replace(/<.*?>/g, "");
+    const title = props.title;
+    const subtitle = props.subtitle;
     const onClickFunction = props.onClickFunction;
-
 
     return (
         <div className="card"

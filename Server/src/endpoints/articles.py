@@ -9,17 +9,28 @@ route = Blueprint('route', __name__)
 @route.route('/', methods=['GET'])
 @route.route('/articles', methods=['GET'])
 def articles():
-    lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc. Nullam auctor, nisl eget ultricies lacinia, nunc nisl tincidunt nisl, eget aliquam nisl nisl eu nunc"
-    title = "Treadstone - Apised"
-    subtitle = "This article come from API"
-    # generate a random number of articles composed of a title, subtitle and a lorem, between 1 and 10
-    art_list = []
-    for i in range(1, 10):
-        art_list.append({
-            'title': title,
-            'subtitle': subtitle,
-            'content': lorem
-        })
+    # Get all the articles
+    db = connect_to_db()
+    cursor = db.cursor(buffered=True)
+    cursor.execute("USE treadstone")
+    cursor.execute(
+        "SELECT articles.id, articles.title, authors.name, articles.content, articles.date FROM articles INNER JOIN authors ON articles.author = authors.id")
+    if cursor.rowcount == 0:
+        return jsonify({
+            'error': 'No articles found'
+        }, 404)
+    else:
+        art_list = []
+        for article in cursor.fetchall():
+            art_list.append({
+                'id': article[0],
+                'title': article[1],
+                'subtitle': article[2],
+                'content': article[3],
+                'description': article[3],
+                'date': article[4]
+            })
+
     return jsonify(art_list, 200)
 
 
@@ -46,5 +57,6 @@ def articles_view(article_id):
             'title': title,
             'subtitle': author,
             'content': content,
+            'description': content,
             'date': date
         }, 200)

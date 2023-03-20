@@ -9,26 +9,23 @@ const subtitle = "A new kind of intelligence";
 function Cards(props)
 {
 
-    props.setIsMounted(true)
+    // props.setIsMounted(true);
     useEffect(() =>
         {
-            if (!props.isMounted)
-            {
-                props.setIsMounted(true);
-                props.setArticles(get_articles(props));
-            }
+            props.setArticles(get_articles(props).then(data => props.setArticles(data)));
         },
-        [props.isMounted]
+        [props.setArticles]
     );
-
+    
     let cards = [];
     if (props.articles != null)
     {
-        for (let i = 0; i < props.articles.length; i++)
+        for (let i = 0; i <= props.articles.length; i++)
         {
-            cards.push(<Card key={i} titleValue={props.articles[i].title}
-                             subtitleValue={props.articles[i].subtitle}
-                             descriptionValue={"test"}
+            cards.push(<Card key={i} title={props.articles[0][i].title}
+                             subtitle={props.articles[0][i].subtitle}
+                             description={props.articles[0][i].description}
+                             id={props.articles[0][i].id}
                              onClickFunction={handleArticle}
                              setArticle={props.setArticle}
                              setDisplay_article={props.setDisplay_article}

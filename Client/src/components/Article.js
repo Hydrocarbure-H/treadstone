@@ -4,13 +4,12 @@ import back_button from '../back.svg';
 function Article(props)
 {
     // Use dangerouslySetInnerHTML to render the content as HTML
-    const content = {__html: props.contentValue};
+    const content = {__html: props.content};
 
-    const title = props.titleValue;
-    const subtitle = props.subtitleValue;
+    const title = props.title;
+    const subtitle = props.subtitle;
     const onClickFunction = props.goBackFunction;
-
-
+    
     return (
         <div>
             <div className='close-button' onClick={() => onClickFunction(props)}>
