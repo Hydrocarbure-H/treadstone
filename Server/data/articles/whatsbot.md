@@ -1,8 +1,7 @@
 # WhatsBot
-
 ## Thomas PEUGNET
 
-## Quitter WhatsApp n'a jamais été aussi facile..
+# Quitter WhatsApp n'a jamais été aussi facile..
 
 > Pour une raison sombre et ténébreuse, l'envie de quitter les réseaux sociaux peut parfois arriver dans notre esprit, et ne pas spécialement vouloir en repartir.
 >
