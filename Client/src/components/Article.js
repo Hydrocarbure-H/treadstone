@@ -13,7 +13,7 @@ function Article(props)
 
     return (
         <div>
-            <div className='close-button' onClick={() => onClickFunction()}>
+            <div className='close-button' onClick={() => onClickFunction(props)}>
                 <img src={back_button} alt='back'/>
             </div>
             <div className="article">
