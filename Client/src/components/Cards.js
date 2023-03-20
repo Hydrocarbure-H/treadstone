@@ -16,7 +16,9 @@ function Cards(props)
         },
         [props.setArticles]
     );
-    
+
+    //convert articles into string
+
     let cards = [];
     if (props.articles != null)
     {
