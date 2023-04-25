@@ -1,0 +1,5 @@
+Flask~=2.2.3
+pytest~=7.2.2
+mysql-connector-python~=8.0.32
+Markdown~=3.4.1
+markdown2~=2.4.8
