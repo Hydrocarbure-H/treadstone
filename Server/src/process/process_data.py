@@ -77,20 +77,21 @@ def save_data_to_db(db, data):
     # Check if the article exists
     cursor.execute("SELECT * FROM articles WHERE title = '" + data["title"] + "'")
     # Check the line count
+    print(data)
     if cursor.rowcount == 0:
         # Insert the article into the database
         cursor.execute("INSERT INTO articles "
                        "(title, author, content, date) "
                        "VALUES "
                        "(%s, %s, %s, %s)",
-                       (data["title"], author_id, data["content"], data["date"]))
+                       (str(data["title"]), author_id, str(data["content"]), str(data["date"])))
 
     else:
         # Update the article
         cursor.execute("UPDATE articles SET "
                        "title = %s, author = %s, content = %s, date = %s "
                        "WHERE title = %s",
-                       (data["title"], author_id, data["content"], data["date"], data["title"]))
+                       (str(data["title"]), author_id, str(data["content"]), str(data["date"]), str(data["title"])))
 
     # Commit the changes
     db.commit()
