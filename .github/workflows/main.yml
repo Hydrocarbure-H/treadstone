@@ -1,7 +1,9 @@
 name: Deploy on Apache Server via SSH
-on: [push]
+on: 
+  push:
+    branches:
+        - main
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
