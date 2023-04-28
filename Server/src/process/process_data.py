@@ -43,8 +43,8 @@ def get_data_from_file(file_name):
         # Remove the first 2 lines of the file
         data = data.split("\n")[2:]
         # Convert it to HTML, with Fence code blocks and add syntax highlighting, linguist
-        result["content"] = markdown.markdown("\n".join(data),
-                                              extras=["fenced-code-blocks", "code-friendly"])
+        result["content"] = str(markdown.markdown("\n".join(data),
+                                                  extras=["fenced-code-blocks", "code-friendly"]))
         # Return the result
         return result
 
@@ -61,13 +61,13 @@ def save_data_to_db(db, data):
     cursor.execute("USE treadstone")
 
     # Check if the author exists
-    cursor.execute("SELECT * FROM authors WHERE name = '" + data["author"] + "'")
+    cursor.execute("SELECT * FROM authors WHERE name = '" + str(data["author"]) + "'")
     # Check the line count
     if cursor.rowcount == 0:
         # Insert the author into the database
-        cursor.execute("INSERT INTO authors (name) VALUES ('" + data["author"] + "')")
+        cursor.execute("INSERT INTO authors (name) VALUES ('" + str(data["author"]) + "')")
         # Get the id of the author
-        cursor.execute("SELECT id FROM authors WHERE name = '" + data["author"] + "'")
+        cursor.execute("SELECT id FROM authors WHERE name = '" + str(data["author"]) + "'")
         # Set the author id
         author_id = cursor.fetchone()[0]
     else:
@@ -75,9 +75,8 @@ def save_data_to_db(db, data):
         author_id = cursor.fetchone()[0]
 
     # Check if the article exists
-    cursor.execute("SELECT * FROM articles WHERE title = '" + data["title"] + "'")
+    cursor.execute("SELECT * FROM articles WHERE title = '" + str(data["title"]) + "'")
     # Check the line count
-    print(data)
     if cursor.rowcount == 0:
         # Insert the article into the database
         cursor.execute("INSERT INTO articles "
