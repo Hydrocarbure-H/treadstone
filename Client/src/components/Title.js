@@ -2,7 +2,7 @@ function Title()
 {
     return (
         <div className="title">
-            TreadStone.fr
+            Treadstone.fr
         </div>
     )
 }
