@@ -1,3 +1,5 @@
+import {display_article} from "./article.js";
+
 export function create_cards(cards_list)
 {
     // Create cards
@@ -16,7 +18,7 @@ export function create_card(card)
     card_div.className = "card";
     card_div.onclick = function ()
     {
-        alert("Hello World!");
+        display_article(card);
     };
 
     card.description = card.description.replace(/<h1.*?>.*?<\/h1>/, "").replace(/<h2.*?>.*?<\/h2>/, "").replace(/<.*?>/g, "");
