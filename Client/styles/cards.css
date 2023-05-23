@@ -12,7 +12,7 @@
     transition: all 0.3s ease;
 }
 
-.miniature {
+.miniature img {
     width: 150px;
     margin: 0 auto;
 }
@@ -41,7 +41,6 @@
     -webkit-box-orient: vertical;
     /* word wrap */
     word-wrap: break-word;
-
 
 
     margin-top: 10px;

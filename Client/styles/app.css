@@ -1,3 +1,9 @@
+/*Import from url local file */
+@import url('cards.css');
+@import url('window.css');
+@import url('main.css');
+@import url('title.css');
+
 .container {
     display: flex;
     flex-direction: column;
