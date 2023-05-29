@@ -2,7 +2,7 @@
 ## Thomas PEUGNET
 
 # Installation - Notes
-
+Cet article contient les notes d'installation permettant d'intégrer rapidement toutes les fonctionnalités nécessaires à l'utilisation correcte de mon terminal.
 ## `ZSH`
 ### Télécharger le projet
 `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`

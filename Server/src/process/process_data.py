@@ -14,9 +14,11 @@ def process_data(db):
     # Loop through the files
     for file in files:
         # Get the data from the file
-        data = get_data_from_file(file)
-        # Save the data to the database
-        save_data_to_db(db, data)
+        if ".md" in file:
+            print("processing " + file + "...")
+            data = get_data_from_file(file)
+            # Save the data to the database
+            save_data_to_db(db, data)
 
 
 def get_data_from_file(file_name):
