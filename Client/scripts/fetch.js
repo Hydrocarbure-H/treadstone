@@ -13,7 +13,7 @@ export function get_articles()
 
 export function get_request(endpoint)
 {
-    const url = "https://api.treadstone.fr" + endpoint;
+    const url = "http://127.0.0.1:5000" + endpoint;
     let xhr = new XMLHttpRequest()
     xhr.open('GET', url, true)
     xhr.send();
