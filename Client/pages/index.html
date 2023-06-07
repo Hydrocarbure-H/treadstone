@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Treadstone.fr</title>
-    <link rel="stylesheet" href="../styles/app.css">
+    <!--    add favicon -->
+    <link href="../assets/images/logo250.png" rel="icon" type="image/png"/>
+    <link href="../styles/app.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type=module src="../scripts/cards.js"></script>
-    <script type=module src="../scripts/article.js"></script>
-    <script type=module src="../scripts/fetch.js"></script>
-    <script type=module src="../scripts/app.js"></script>
+    <script src="../scripts/cards.js" type=module></script>
+    <script src="../scripts/article.js" type=module></script>
+    <script src="../scripts/fetch.js" type=module></script>
+    <script src="../scripts/app.js" type=module></script>
 </head>
 <body>
-<div class="container">
+<div class="container" id="container">
     <div class="window" id="cards">
         <div class="title">
             Treadstone.fr
