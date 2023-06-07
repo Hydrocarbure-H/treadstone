@@ -22,7 +22,7 @@ export function display_article(article)
     let miniature_div = document.createElement("div");
     miniature_div.className = "miniature";
     let miniature_img = document.createElement("img");
-    miniature_img.src = article.image;
+    miniature_img.src = "../assets/images/long-logo.png";
     miniature_img.alt = "miniature";
     miniature_div.appendChild(miniature_img);
     let article_title = document.createElement("div");

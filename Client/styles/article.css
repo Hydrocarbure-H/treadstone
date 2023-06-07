@@ -7,6 +7,12 @@
     padding: 0px 50px 50px 50px;
 }
 
+.miniature img {
+    width: 400px;
+    border-radius: 25px;
+    box-shadow: none;
+}
+
 .article-title {
     font-size: 25px;
     font-weight: bold;

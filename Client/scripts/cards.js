@@ -26,7 +26,7 @@ export function create_card(card)
     const miniature_div = document.createElement("div");
     miniature_div.className = "miniature";
     const miniature_img = document.createElement("img");
-    miniature_img.src = card.image;
+    miniature_img.src = "../assets/images/logo250.png";
     miniature_img.alt = "miniature";
     miniature_div.appendChild(miniature_img);
 
