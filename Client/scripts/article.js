@@ -1,13 +1,13 @@
+import {get_articles} from "./fetch.js";
+
 export function display_article(article)
 {
     // Clear the content of the container div
     document.getElementById("container").innerHTML = "";
-
-    // add the article.css file
-
     const link = document.createElement("link");
     link.href = "../styles/article.css";
     link.rel = "stylesheet";
+
     document.head.appendChild(link);
     let window_article = document.createElement("div");
     window_article.className = "window-article";
@@ -41,5 +41,24 @@ export function display_article(article)
     window_article.appendChild(close_button);
     window_article.appendChild(article_div);
     document.getElementById("container").appendChild(window_article);
+
+    // add the close button event listener
+    close_button.addEventListener("click", function ()
+    {
+        // Clear the content of the container div
+        document.getElementById("container").innerHTML = "";
+        // remove the article.css file from the head
+        document.head.removeChild(link);
+        let window = document.createElement("div");
+        window.className = "window";
+        window.id = "cards";
+        let title = document.createElement("div");
+        title.className = "title";
+        title.innerHTML = "Treadstone.fr";
+        window.appendChild(title);
+        document.getElementById("container").appendChild(window);
+        get_articles();
+
+    });
 }
 
