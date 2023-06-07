@@ -11,6 +11,7 @@
     width: 400px;
     border-radius: 25px;
     box-shadow: none;
+    animation: move 1s ease;
 }
 
 .article-title {
@@ -84,4 +85,13 @@ a {
 a:hover {
     color: #aaa;
     text-decoration: none;
+}
+
+@keyframes move {
+    0% {
+        width: 200px;
+    }
+    100% {
+        width: 400px;
+    }
 }
