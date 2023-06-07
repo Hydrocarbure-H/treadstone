@@ -14,7 +14,7 @@ def articles():
     cursor = db.cursor(buffered=True)
     cursor.execute("USE treadstone")
     cursor.execute(
-        "SELECT articles.id, articles.title, authors.name, articles.content, articles.date, articles.urlToImage FROM articles INNER JOIN authors ON articles.author = authors.id")
+        "SELECT articles.id, articles.title, authors.name, articles.content, articles.date FROM articles INNER JOIN authors ON articles.author = authors.id")
     if cursor.rowcount == 0:
         return jsonify({
             'error': 'No articles found'
@@ -28,8 +28,7 @@ def articles():
                 'subtitle': article[2],
                 'content': article[3],
                 'description': article[3],
-                'date': article[4],
-                'image': article[5]
+                'date': article[4]
             })
 
     return jsonify(art_list, 200)
